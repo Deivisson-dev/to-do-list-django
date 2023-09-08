@@ -18,19 +18,13 @@ Requisitos de Instalação
 
 Como Executar o Projeto
 
-    Clone o repositório para o seu ambiente de desenvolvimento:
+#Clone o repositório para o seu ambiente de desenvolvimento:
 
 
+    git clone https://github.com/Deivisson-dev/FuturoTech.git
 
-git clone https://github.com/Deivisson-dev/FuturoTech.git
-
-    Navegue até a pasta do projeto:
-
-
-cd FuturoTech
 
 #Crie um ambiente virtual (recomendado) e ative-o:
-
 
 
     python -m venv venv
