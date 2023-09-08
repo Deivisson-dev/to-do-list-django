@@ -20,52 +20,44 @@ Como Executar o Projeto
 
     Clone o repositório para o seu ambiente de desenvolvimento:
 
-bash
+
 
 git clone https://github.com/Deivisson-dev/FuturoTech.git
 
     Navegue até a pasta do projeto:
 
-bash
 
 cd FuturoTech
 
-    Crie um ambiente virtual (recomendado) e ative-o:
+#Crie um ambiente virtual (recomendado) e ative-o:
 
-bash
 
-python -m venv venv
-source venv/bin/activate  # No Windows: venv\Scripts\activate
 
-    Instale as dependências do projeto:
+    python -m venv venv
+    source venv/bin/activate  # No Windows: venv\Scripts\activate
 
-bash
+#Instale as dependências do projeto:
 
-pip install -r requirements.txt
 
-    Realize as migrações do banco de dados:
+    pip install -r requirements.txt
 
-bash
+#Realize as migrações do banco de dados:
 
-python3 manage.py migrate
 
-    Crie um superusuário para acessar a interface de administração:
+    python3 manage.py migrate
 
-bash
+#Crie um superusuário para acessar a interface de administração:
 
-python3 manage.py createsuperuser
 
-    Inicie o servidor de desenvolvimento:
 
-bash
+    python3 manage.py createsuperuser
 
-python manage.py runserver
+#Inicie o servidor de desenvolvimento:
 
-    Acesse a aplicação em seu navegador em http://localhost:8000/.
 
-Estrutura do Projeto
+    python manage.py runserver
 
-A estrutura de diretórios do projeto é organizada da seguinte forma:
+#Acesse a aplicação em seu navegador em http://localhost:8000/.
 
 
 Contribuições
