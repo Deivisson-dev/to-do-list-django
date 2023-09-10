@@ -5,24 +5,24 @@
     <div class="row justify-content-center">
         <div class="col-md-5">
             <form method="POST" class="card card-body">
+
+                {{error}}
+
+                {% csrf_token %}
                 <h1 class="text-center">Cadastrar</h1>
                 <div class="mb-3">
                     <label for="username" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="username" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">E-mail</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                    <input type="text" class="form-control" id="username" name="username">
                 </div>
                 <div class="mb-3">
                     <label for="senha1" class="form-label">Senha</label>
-                    <input type="password" class="form-control" id="senha1">
+                    <input type="password" class="form-control" id="senha1" name="senha1">
                 </div>
                 <div class="mb-3">
                     <label for="senha2" class="form-label">Confirmar Senha</label>
-                    <input type="password" class="form-control" id="senha2">
+                    <input type="password" class="form-control" id="senha2" name="senha2">
                 </div>
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
             </form>
         </div>
     </div>

@@ -1,8 +1,7 @@
-"""
-URL configuration for blog project.
+"""appYoutube URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
+    https://docs.djangoproject.com/en/4.1/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -18,9 +17,12 @@ from django.contrib import admin
 from django.urls import path
 from task import views
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('signup/', views.signup, name='signup'),
+    path('signin/', views.signin, name='signin'),
+    path('sair/', views.sair, name='sair'),
+    path('tasks/', views.tasks, name='tasks'),
+
 ]
