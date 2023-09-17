@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-
+from .forms import TaskForm
 
 
 # Create your views here.
@@ -22,7 +22,7 @@ def signup(request):
         return render(request,'signup.html', {'form' : UserCreationForm})   
 
     else: 
-        if request.POST['senha1'] == request.POST['password2']:
+        if request.POST['senha1'] == request.POST['senha2']:
 
             try: 
                 
@@ -62,3 +62,19 @@ def sair(request):
 @login_required       
 def tasks(request):
     return render(request,'tasks.html')
+
+@login_required
+def create_tasks(request):
+
+    if request.method == 'GET':
+        return render(request,'create_tasks.html', {'form' : TaskForm})
+    else:
+        try:
+            form = TaskForm(request.POST)
+            new_task = form.save(commit=False)
+            new_task.user = request.user
+            new_task.save()
+            return redirect('tasks')
+
+        except ValueError:
+            return render(request,'create_tasks.html', {'form' : TaskForm, 'error' : 'Dados incorretos'})
