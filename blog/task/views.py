@@ -5,7 +5,8 @@ from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import TaskForm
-
+from .models import Task
+from django.utils import timezone
 
 # Create your views here.
 
@@ -78,3 +79,46 @@ def create_tasks(request):
 
         except ValueError:
             return render(request,'create_tasks.html', {'form' : TaskForm, 'error' : 'Dados incorretos'})
+        
+@login_required
+def tasks(request):
+    tasks = Task.objects.filter(user=request.user, datecompleted__isnull=True)
+    return render(request,'tasks.html', {'tasks' : tasks})
+
+@login_required
+def task_detalhes(request, task_id):
+    if request.method == 'GET':
+        task = get_object_or_404(Task, pk=task_id, user=request.user)
+        form = TaskForm(instance=task)
+        return render(request,'task_detalhes.html', {'task' : task, 'form' : form})
+
+    else:
+        try:
+            task = get_object_or_404(Task, pk=task_id, user=request.user)
+            form = TaskForm(request.POST, instance=task)
+            form.save()
+            return redirect('tasks')
+
+        except ValueError:
+            return render(request,'task_detalhes.html', {'task' : task, 'form' : form, 'error' : 'Erro ao atualizar uma tarefa'})
+        
+
+@login_required
+def completed_tarefa(request, task_id):
+    task = get_object_or_404(Task, pk=task_id, user=request.user)
+    if request.method == 'POST':
+        task.datecompleted = timezone.now()
+        task.save()
+        return redirect('tasks')
+
+@login_required
+def deleted_tarefa(request, task_id):
+    task = get_object_or_404(Task, pk=task_id, user=request.user)
+    if request.method == 'POST':
+        task.delete()
+        return redirect('tasks')
+
+@login_required
+def exibir_tarefas_completadas(request):
+    tasks = Task.objects.filter(user=request.user, datecompleted__isnull=False).order_by('-datecompleted')
+    return render(request,'tasks.html', {'tasks' : tasks})
