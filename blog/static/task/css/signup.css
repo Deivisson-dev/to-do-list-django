@@ -1,0 +1,176 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+
+.container{
+    display: flex;
+    flex-direction: row;
+}
+
+.tab_one{
+    height: 100vh;
+    width: 40vw;
+    background: #000000;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.tab_two{
+    height: 100vh;
+    width: 60vw;
+    background: #FFFAFA;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1{
+    text-align: center;
+    margin-top: 73px;
+    color: #fff;
+    font-size: 80px;
+}
+
+
+h2{
+    color: #FFF;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+}
+
+h3{
+    color: #FFF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.div_text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: 80px;
+}
+
+
+button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 50px;
+    background-color: #000000;
+    border-radius: 30px;
+    border: none;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    transition: all 0.3s ease;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.texto_two{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.conta_text{
+    color: #000;
+    text-align: center;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.dados_text{
+    color: #A5A5A5;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#username, #email, #senha1, #senha2{
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    background-color: #F3EBEB;
+    border: none;
+}
+
+.ipt_text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.ipt_text label{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #F3EBEB;
+    width: 40vw;
+    height: 66px;
+    gap: 20px;
+}
+
+.ipt_text img{
+    margin-right: 10px;
+    margin-left: 30px;
+}
+
+.form_main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#olho{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.link{
+    color: #000;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 20px;
+    text-decoration: none;
+
+}
+
+.link:hover{
+    color: #000;
+    text-decoration: underline;
+}
+
+
+.link:visited{
+    color: gold;
+}

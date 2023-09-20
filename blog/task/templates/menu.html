@@ -10,7 +10,7 @@
 <body>
     <nav class="navbar navbar-dark bg-dark">
         <div class="container">
-          <a class="navbar-brand" href="#">Futuro Tech</a>
+          <a class="navbar-brand" href="#">To-do-list</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -25,9 +25,6 @@
 
                 {% if user.is_authenticated %}
 
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/">Home</a>
-                </li>
 
                 <li class="nav-item">
                   <a class="nav-link" href="/create/tasks">Criar Tarefas</a>
@@ -48,11 +45,6 @@
 
               {% else %}
 
-
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
-                  </li>
-
                   <li class="nav-item">
                     <a class="nav-link" href="/signup">Cadastrar</a>
                   </li>
@@ -66,10 +58,6 @@
                 
            
               </ul>
-              <form class="d-flex mt-3" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-success" type="submit">Search</button>
-              </form>
             </div>
           </div>
         </div>

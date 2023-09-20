@@ -1,30 +1,90 @@
-{% extends 'menu.html' %}
+{% load static %}
 
 {% block content %}
-<main class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-5">
-            <form method="POST" class="card card-body">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'task/css/signup.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200&display=swap" rel="stylesheet">
+    <title>Cadastro</title>
+</head>
+<body>
+    <div class="container">
+        <div class="tab_one">
+
+            <h1>To-do-list</h1>
+            <div class="div_text">
+                <h2>Bem-vindo</h2>
+                <h2>de volta!</h2>
+                <h3>Acesse sua conta agora</h3>
+                <h3>mesmo.</h3>
+            </div>
+
+            <a href="/signin">ENTRAR</a>
+        </div>
+        <div class="tab_two">
+            <div class="texto_two">
+                <h2 class="conta_text">Crie sua conta</h2>
+                <h2 class="dados_text">Preencha seus dados</h2>
+            </div>
+
+            <form method="POST">
 
                 {{error}}
 
                 {% csrf_token %}
-                <h1 class="text-center">Cadastrar</h1>
-                <div class="mb-3">
-                    <label for="username" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="username" name="username">
+
+                <div class="form_main">
+                    <div class="ipt_text">
+                        <label for="nome">
+                            <img src="{% static 'task/img/caceta.svg' %}" alt="">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Nome">
+                        </label>
+                    </div>
+                    <div class="ipt_text">
+                        <label for="email">
+                            <img src="{% static 'task/img/email.svg' %}" alt="">
+                            <input type="email" name="email" id="email" placeholder="E-mail">
+                        </label>
+                    </div>
+                    <div class="ipt_text">
+                        <label for="senha">
+                            <img src="{% static 'task/img/senha.svg' %}" alt="">
+                            <input type="password" class="form-control" id="senha1" name="senha1" placeholder="Senha">
+                            <img src="{% static 'task/img/olho.png' %}" alt="" id="olho">
+                        </label>
+                    </div>
+                    <div class="ipt_text">
+                        <label for="senha">
+                            <img src="{% static 'task/img/senha.svg' %}" alt="">
+                            <input type="password" class="form-control" id="senha2" name="senha2" placeholder="Confirmar senha">
+                        </label>
+                    </div>
+                    <button type="submit">CADASTRAR</button>
                 </div>
-                <div class="mb-3">
-                    <label for="senha1" class="form-label">Senha</label>
-                    <input type="password" class="form-control" id="senha1" name="senha1">
-                </div>
-                <div class="mb-3">
-                    <label for="senha2" class="form-label">Confirmar Senha</label>
-                    <input type="password" class="form-control" id="senha2" name="senha2">
-                </div>
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
             </form>
         </div>
     </div>
-</main>
+</body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const senhaInput = document.getElementById("senha1");
+    const senhaInput2 = document.getElementById("senha2");
+    const mostrarSenhaButton = document.getElementById("olho");
+
+    mostrarSenhaButton.addEventListener("click", function() {
+        if (senhaInput.type === "password") {
+            senhaInput.type = "text";
+        } else {
+            senhaInput.type = "password";
+        }
+    });
+});
+</script>
+</html>
 {% endblock %}
