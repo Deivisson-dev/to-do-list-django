@@ -1,0 +1,38 @@
+{% extends 'menu.html' %}
+
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'task/css/tasks.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Tarefas Completas</title>
+    <style>
+        ol{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tarefas Completas</h1>
+    <ol class="to-do-list">
+        {% for task in tasks %}
+            <strong>
+                <li>{{ task.title }}</li>
+            </strong>
+        {% endfor %}
+    </ol>
+</body>
+</html>
+{% endblock %}

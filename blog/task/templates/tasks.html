@@ -1,41 +1,59 @@
 {% extends 'menu.html' %}
-{% load static %}
+
 {% block content %}
 
-<main class="container mt-5">
-    <div class="row">
-        <div class="col-md-5 offset-md-3">
-            <h1 class="text-center">Tarefas Pendentes</h1>
-            <ul class="list-group pt-5">
-                {% for task in tasks %}
-                <a class="list-group-item {% if task.important %}list-group-item-success{% endif %}" href="{% url 'task_detalhes' task.id %}">
-                    <header class="d-flex justify-content-between align-items-center">
-                        <div>
-                            {% if task.important %}
-                            <strong class="fw-bold text-success" id="importante">{{task.title}}</strong>
-                            {% else %}
-                            <strong class="fw-bold">{{task.title}}</strong>
-                            {% endif %}
-                        </div>
-
-                        <form action="{% url 'deleted_tarefa' task.id %}" method="POST">
-                            {% csrf_token %}
-                            <div class="task-image">
-                                <button type="submit" class="btn btn-link" style="padding: 0;">
-                                    <img src="{% static 'task/img/excluir_botao.png' %}" alt="Excluir" width="50" height="50">
-                                </button>
-                            </div>
-                        </form>
-                        
-
-                    </header>
-                </a>
-                {% endfor %}
-            </ul>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'task/css/tasks.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>To-do-list</title>
+</head>
+<body>
+    <form action="/create/tasks" method="POST">
+        {{error}}
+        {% csrf_token %}
+        <h1>To Do List</h1>
+        <div class="content">
+            <div class="content--add-item">
+                <input type="text" id="title" name="title">
+                <button id="btn-new-task" title="Clique aqui para adicionar uma nova task">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                    </svg>
+                </button>
+            </div>
         </div>
-    </div>
-
-        
-</main>
-
+    </form>
+    <ol id="to-do-list">
+        {% for task in tasks %}
+        <li>
+                    <strong class="fw-bold">{{task.title}}</strong>
+                            <div class="div_buttons">        
+                                <form action="{% url 'deleted_tarefa' task.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <button id="btn-ok">
+                                        <img src="{% static 'task/img/lixeira-de-reciclagem.svg' %}" alt="" width="16" height="16">
+                                    </button>
+                                </form>
+                                <form action="{% url 'mark_task_completed' task.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <button id='btn-ok' class="complete-task" data-task-id="{{ task.id }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/></svg>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </form>
+        </li>
+        {% endfor %}
+    </ol>
+</body>
+</html>
 {% endblock %}

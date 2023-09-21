@@ -8,7 +8,7 @@ from .forms import TaskForm
 from .models import Task
 from django.utils import timezone
 from PIL import Image
-
+from django.http import JsonResponse
 # Create your views here.
 
 # Home do Projeto
@@ -112,6 +112,7 @@ def completed_tarefa(request, task_id):
         task.save()
         return redirect('tasks')
 
+
 @login_required
 def deleted_tarefa(request, task_id):
     task = get_object_or_404(Task, pk=task_id, user=request.user)
@@ -132,3 +133,23 @@ def my_view(request):
     image = Image.open(image_path)
 
     return render(request, 'template.html', {'image': image})
+
+
+
+@login_required
+def mark_task_completed(request, task_id):
+    task = get_object_or_404(Task, pk=task_id, user=request.user)
+    
+    if request.method == 'POST':
+        task.datecompleted = timezone.now()
+        task.save()
+        
+        return redirect('tasks')  # Redirecione de volta para a lista de tarefas pendentes (incompletas)
+    
+    return JsonResponse({'message': 'Método inválido'}, status=405)
+
+
+@login_required
+def completed_tasks(request):
+    tasks = Task.objects.filter(user=request.user, datecompleted__isnull=False).order_by('-datecompleted')
+    return render(request, 'completed_tasks.html', {'tasks': tasks})

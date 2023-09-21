@@ -29,4 +29,6 @@ urlpatterns = [
     path('create/<int:task_id>/completed', views.completed_tarefa, name='completed_tarefa'),
     path('deleted_tarefa/<int:task_id>/', views.deleted_tarefa, name='deleted_tarefa'),
     path('exibir_tarefas_completadas', views.exibir_tarefas_completadas, name='exibir_tarefas_completadas'),
+    path('mark_task_completed/<int:task_id>/', views.mark_task_completed, name='mark_task_completed'),
+    path('completed-tasks/', views.completed_tasks, name='completed_tasks'),
 ]
