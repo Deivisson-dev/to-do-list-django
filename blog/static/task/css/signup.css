@@ -16,7 +16,7 @@
 .tab_one{
     height: 100vh;
     width: 40vw;
-    background: #000000;
+    background: #2e1e45;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -108,7 +108,7 @@ a{
 }
 
 .conta_text{
-    color: #000;
+    color: #2e1e45;
     text-align: center;
     font-size: 32px;
     font-style: normal;
