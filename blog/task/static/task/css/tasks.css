@@ -79,7 +79,7 @@ h1{
     background-color: var(--color-dark3);
 }
 
-#to-do-list{
+.to-do-list{
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -87,7 +87,7 @@ h1{
     list-style: none;
 }
 
-#to-do-list li{
+.to-do-list li{
     list-style-type: none;
     font-size: 1.4rem;
     text-transform: capitalize;
@@ -97,7 +97,7 @@ h1{
     gap: 250px;
 }
 
-#to-do-list li:hover{
+.to-do-list li:hover{
     background-color: var(--color-dark3);
     transition: .4s;
     border-radius: 1rem;
