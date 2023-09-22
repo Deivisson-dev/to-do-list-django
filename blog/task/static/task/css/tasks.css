@@ -107,7 +107,7 @@ h1{
 #btn-ok{
     border: none;
     background-color: #2e1e45;
-    color: var(--color-white);
+    color: #fff;
     padding: .4rem .8rem;
     border-radius: 50%;
     width: 50px;

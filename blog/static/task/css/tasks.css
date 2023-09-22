@@ -106,7 +106,7 @@ h1{
 
 #btn-ok{
     border: none;
-    background-color: var(--color-green);
+    background-color: #2e1e45;
     color: var(--color-white);
     padding: .4rem .8rem;
     border-radius: 50%;
@@ -120,5 +120,5 @@ h1{
 }
 
 #btn-ok:hover{
-    background-color: var(--color-green2);
+    background-color: #3f2b5b;
 }
