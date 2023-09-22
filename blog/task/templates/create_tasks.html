@@ -3,40 +3,44 @@
 {% block content %}
 
 {% load static %}
-<link rel="stylesheet" href="{% static 'task/css/create_tasks.css' %}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200&display=swap" rel="stylesheet">
-<main class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-5">
-            <form action="/create/tasks" method="POST" class="card card-body">
-
-                {{error}}
-
-                {% csrf_token %}
-                <h1 class="text-center">Criar Tarefa</h1>
-
-                <div class="mb-3">
-                    <label for="title" class="form-label">Titulo</label>
-                    <input type="text" class="form-control" id="title" name="title">
-                </div>
-
-                <div class="mb-3">
-                    <label for="description" class="form-label">Descrição</label>
-                    <textarea name="description" id="description" rows="3" class="form-control"></textarea>
-                </div>
-
-                <div class="form-check pb-2">
-                    <input class="form-check-input" type="checkbox" value="" id="important">
-                    <label class="form-check-label" for="important">
-                      Importante
-                    </label>
-                  </div>
-
-                <button type="submit" class="btn btn-primary">Salvar Tarefa</button>
-            </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'task/css/create_tasks.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200&display=swap" rel="stylesheet">
+    <title>Criar Tarefas</title>
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <form action="/create/tasks" method="POST" class="card">
+                    {{error}}
+                    {% csrf_token %}
+                    <h1 class="text-center">Criar Tarefa</h1>
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Titulo</label>
+                        <input type="text" class="form-control" id="title" name="title">
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Descrição</label>
+                        <textarea name="description" id="description" rows="3" class="form-control"></textarea>
+                    </div>
+                    <div class="form-check pb-2">
+                        <input class="form-check-input" type="checkbox" value="" id="important">
+                        <label class="form-check-label" for="important">
+                            Importante
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Salvar Tarefa</button>
+                </form>
+            </div>
         </div>
-    </div>
-</main>
+    </main>
+</body>
+</html>
 {% endblock %}

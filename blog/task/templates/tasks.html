@@ -14,8 +14,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>To-do-list</title>
-    <style>
-    </style>
 </head>
 <body>
     <form action="/create/tasks" method="POST">
@@ -36,26 +34,31 @@
     <ol id="to-do-list">
         {% for task in tasks %}
         <li>
-                    <strong class="fw-bold">{{task.title}}</strong>
-                            <div class="div_buttons">        
-                                <form action="{% url 'deleted_tarefa' task.id %}" method="POST">
-                                    {% csrf_token %}
-                                    <button id="btn-ok">
-                                        <img src="{% static 'task/img/lixeira-de-reciclagem.svg' %}" alt="" width="16" height="16">
-                                    </button>
-                                </form>
-                                <form action="{% url 'mark_task_completed' task.id %}" method="POST">
-                                    {% csrf_token %}
-                                    <button id='btn-ok' class="complete-task" data-task-id="{{ task.id }}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/></svg>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </form>
+            <a href="{% url 'task_detalhes' task.id %}" style="text-decoration: none; color: #FFF;">
+                <strong class="{% if task.important %}fw-bold text-success{% else %}fw-bold{% endif %}">
+                    {{ task.title }}
+                </strong>
+            </a>
+            <div class="div_buttons">
+                <form action="{% url 'deleted_tarefa' task.id %}" method="POST">
+                    {% csrf_token %}
+                    <button id="btn-ok">
+                        <img src="{% static 'task/img/lixeira-de-reciclagem.svg' %}" alt="" width="16" height="16">
+                    </button>
+                </form>
+                <form action="{% url 'mark_task_completed' task.id %}" method="POST">
+                    {% csrf_token %}
+                    <button id='btn-ok' class="complete-task" data-task-id="{{ task.id }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
         </li>
         {% endfor %}
     </ol>
+    
 </body>
 </html>
 {% endblock %}

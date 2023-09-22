@@ -1,4 +1,60 @@
-body{
+body {
+    font-family: Lato;
     background-color: rgb(14, 14, 14);
-    font-family: 'Lato';
+    color: #fff;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.row {
+    justify-content: center;
+}
+
+.col-md-5 {
+    width: 100%;
+    max-width: 400px;
+}
+
+.card {
+    background-color: rgb(14, 14, 14);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    color: #fff; /* Define a cor do texto dentro do cartão como branco */
+}
+
+.text-center {
+    text-align: center;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.form-check {
+    padding-bottom: 15px;
+}
+
+.btn-primary {
+    background-color: #2e1e45;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #3f2b5b;
 }

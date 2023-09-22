@@ -1,48 +1,56 @@
 {% extends 'menu.html' %}
 
 {% block content %}
-<main class="container mt-5">
 
-    <div class="row">
+{% load static %}
 
-        <div class="col-md-5 offset-md-3">
 
-                <h1 class="text-center"> Detalhes das Tarefas  </h1>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'task/css/task_detalhes.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200&display=swap" rel="stylesheet">
+    <title>Detalhes da Tarefa</title>
+</head>
+<body>
+    <main class="container mt-5">
+        <div class="row">
+            <div class="col-md-5 offset-md-3">
+                <h1 class="text-center">Detalhes da Tarefa</h1>
                 {{error}}
-
-                <form action="#" method="POST" class="card card-body">
-
+                <form action="#" method="POST" class="card card-body" style="background-color: rgb(14,14,14); color: #FFF; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
                     {% csrf_token %}
-                    {{form.as_p}}
-
-                    <button type="submit" class="btn btn-primary mt-2"> Atualizar </button>
-
-                </form>
-
-
-                <div class="mt-5 d-flex">
-
-
-                    <form action="{% url 'completed_tarefa' task.id %}" method="POST" >
-
-                        {% csrf_token %}
-
-                        <button type="submit" class="btn btn-success m-3"> Completar </button>
                     
+                    <label for="{{ form.title.id_for_label }}">Titulo:</label>
+                    {{ form.title }}
+
+                    <!-- Move the label "Descrição" above the textarea -->
+                    <label for="{{ form.description.id_for_label }}">Descrição:</label>
+                    {{ form.description }}
+                    
+                    <button type="submit" class="btn mt-2" style="background-color: #2e1e45; color: #FFF;">Atualizar</button>
+                </form>
+    
+                <div class="mt-5 d-flex gap-3">
+                    <form action="{% url 'mark_task_completed' task.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success">Completar</button>
                     </form>
-
+    
+                    <form action="{% url 'deleted_tarefa' task.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Deletar</button>
+                    </form>
                 </div>
-
-            </div>           
-        </div>    
-</main>         
-
-
-</br>
-</br>
-</br>
-
+            </div>
+        </div>
+    </main>
+</body>
+</html>
 
 
 

@@ -1,0 +1,14 @@
+body {
+    font-family: Lato;
+    background-color: rgb(14,14,14);
+    font-weight: bold;
+}
+
+.text-center{
+    color: #FFF;
+}
+
+.card card-body{
+    background-color: rgb(14,14,14);
+    font-weight: bold;
+}
