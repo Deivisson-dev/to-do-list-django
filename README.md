@@ -11,10 +11,6 @@ Funcionalidades Principais
         Eles podem marcar as tarefas como concluídas e removê-las quando desejarem.
         A lista de afazeres é atualizada em tempo real.
 
-Requisitos de Instalação
-
-    Django 3.x
-    Outras dependências (verifique o arquivo requirements.txt)
 
 Como Executar o Projeto
 
@@ -24,27 +20,31 @@ Como Executar o Projeto
     git clone https://github.com/Deivisson-dev/FuturoTech.git
 
 
-#Crie um ambiente virtual (recomendado) e ative-o:
+#Crie um ambiente virtual:
 
 
     python -m venv venv
-    source venv/bin/activate  # No Windows: venv\Scripts\activate
+
+#Ative o ambiente virtual
+
+    Linux: source venv/bin/activate /  No Windows: venv\Scripts\activate
 
 #Instale as dependências do projeto:
 
 
     pip install -r requirements.txt
 
+
+#Navegue até a pasta do projeto
+
+    cd blog
+
 #Realize as migrações do banco de dados:
 
-
-    python3 manage.py migrate
-
-#Crie um superusuário para acessar a interface de administração:
+    python manage.py makemigrations
+    python manage.py migrate
 
 
-
-    python3 manage.py createsuperuser
 
 #Inicie o servidor de desenvolvimento:
 
