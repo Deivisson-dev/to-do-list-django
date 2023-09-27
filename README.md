@@ -1,10 +1,6 @@
-Este é o projeto final da disciplina de Algoritmos e Programação de Computadores, que consiste em  um blog com funcionalidade de To-Do List usando o framework Django. Este projeto permite aos usuários criar, visualizar, editar e excluir postagens de blog, bem como gerenciar suas tarefas diárias em uma lista de afazeres.
-Funcionalidades Principais
+Este é o projeto final da disciplina de Algoritmos e Programação de Computadores, que consiste em  um To-Do List usando o framework Django. Este projeto permite aos usuários criar, visualizar, editar e excluir gerenciar suas tarefas diárias em uma lista de afazeres.
 
-    Postagens de Blog:
-        Os usuários podem criar postagens de blog com título, conteúdo e data de publicação.
-        Eles podem editar e excluir suas próprias postagens.
-        As postagens são exibidas em ordem cronológica inversa (a mais recente no topo).
+Funcionalidades Principais:
 
     To-Do List:
         Os usuários podem adicionar tarefas à sua lista de afazeres.
@@ -17,7 +13,7 @@ Como Executar o Projeto
 #Clone o repositório para o seu ambiente de desenvolvimento:
 
 
-    git clone https://github.com/Deivisson-dev/FuturoTech.git
+    git clone https://github.com/Deivisson-dev/To-do-list.git
 
 
 #Crie um ambiente virtual:
@@ -37,7 +33,7 @@ Como Executar o Projeto
 
 #Navegue até a pasta do projeto
 
-    cd blog
+    cd blog/
 
 #Realize as migrações do banco de dados:
 
