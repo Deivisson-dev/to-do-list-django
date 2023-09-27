@@ -7,11 +7,9 @@ from django.contrib.auth.decorators import login_required
 from .forms import TaskForm
 from .models import Task
 from django.utils import timezone
-from PIL import Image
 from django.http import JsonResponse
 # Create your views here.
 
-# Home do Projeto
 def signup(request):
 
     if request.method == 'GET':
@@ -125,16 +123,6 @@ def deleted_tarefa(request, task_id):
 def exibir_tarefas_completadas(request):
     tasks = Task.objects.filter(user=request.user, datecompleted__isnull=False).order_by('-datecompleted')
     return render(request,'tasks.html', {'tasks' : tasks})
-
-def my_view(request):
-    # Caminho para a imagem
-    image_path = 'img/png-transparent-computer-icons-recycling-bin-molinillo-others-rectangle-recycling-waste.png'
-
-    # Carregue a imagem usando Pillow
-    image = Image.open(image_path)
-
-    return render(request, 'template.html', {'image': image})
-
 
 
 @login_required

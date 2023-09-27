@@ -10,7 +10,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200&display=swap" rel="stylesheet">
-    <title>Cadastro</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+RBg5f3VXn01b8fyF1Rl5x6xWd2L6W5eY1QKMjtr5qc2O5KM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <title>Login</title>
     <style>
         .tab_one{
             background-color: #2e1e45;
@@ -20,42 +23,43 @@
             color: #2e1e45;
         }
 
-        button{
+        .button_cadastrar{
             background-color: #2e1e45;
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container_div">
         <div class="tab_one">
 
-            <h1>To-do-list</h1>
+            <h1 class="to_h1">To-do-list</h1>
             <div class="div_text">
-                <h2>Bem-vindo</h2>
-                <h2>de volta!</h2>
-                <h3>Acesse sua conta agora</h3>
-                <h3>mesmo.</h3>
+                <h2 class="to_h2">Bem-vindo</h2>
+                <h2 class="to_h2">de volta!</h2>
+                <h3 class="to_h3">Acesse sua conta agora</h3>
+                <h3 class="to_h3">mesmo.</h3>
             </div>
 
 
-            <a href="/signup">CADASTRAR</a>
+            <a href="/signup" class="link_enter">CADASTRAR</a>
         </div>
         <div class="tab_two">
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
             <div class="texto_two">
                 <h2 class="conta_text">Entre na sua conta</h2>
                 <h2 class="dados_text">Preencha seus dados</h2>
             </div>
 
-            <form method="POST" action="/signin/">
-
-                {{error}}
-
-                {% csrf_token %}
+            <form method="POST" action="/signin/">{% csrf_token %}
 
                 <div class="form_main">
                     <div class="ipt_text">
                         <label for="username">
-                            <img src="{% static 'task/img/caceta.svg' %}" alt="">
+                            <img src="{% static 'task/img/profile.svg' %}" alt="">
                             <input type="text" class="form-control" id="username" name="username" placeholder="Nome">
                         </label>
                     </div>
@@ -63,29 +67,13 @@
                         <label for="senha">
                             <img src="{% static 'task/img/senha.svg' %}" alt="">
                             <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha">
-                            <img src="{% static 'task/img/olho.png' %}" alt="" id="olho">
                         </label>
                     </div>
-                    <button type="submit">ENTRAR</button>
+                    <button type="submit" class="button_cadastrar">ENTRAR</button>
                 </div>
             </form>
         </div>
     </div>
 </body>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-    const senhaInput = document.getElementById("senha");
-    const mostrarSenhaButton = document.getElementById("olho");
-
-    mostrarSenhaButton.addEventListener("click", function() {
-        if (senhaInput.type === "password") {
-            senhaInput.type = "text";
-        } else {
-            senhaInput.type = "password";
-        }
-    });
-});
-</script>
 </html>
 {% endblock %}
