@@ -68,13 +68,14 @@
                         <label for="senha">
                             <img src="{% static 'task/img/senha.svg' %}" alt="">
                             <input type="password" class="form-control" id="senha1" name="senha1" placeholder="Senha">
-                            <img src="{% static 'task/img/olho.png' %}" alt="" id="olho">
+                            <img src="{% static 'task/img/olho.png' %}" alt="" id="olho1">
                         </label>
                     </div>
                     <div class="ipt_text">
                         <label for="senha">
                             <img src="{% static 'task/img/senha.svg' %}" alt="">
                             <input type="password" class="form-control" id="senha2" name="senha2" placeholder="Confirmar senha">
+                            <img src="{% static 'task/img/olho.png' %}" alt="" id="olho2">
                         </label>
                     </div>
                     <button type="submit">CADASTRAR</button>
@@ -88,13 +89,22 @@
     document.addEventListener("DOMContentLoaded", function() {
     const senhaInput = document.getElementById("senha1");
     const senhaInput2 = document.getElementById("senha2");
-    const mostrarSenhaButton = document.getElementById("olho");
+    const mostrarSenhaButton = document.getElementById("olho1");
+    const mostrarSenhaButton2 = document.getElementById("olho2");
 
     mostrarSenhaButton.addEventListener("click", function() {
         if (senhaInput.type === "password") {
             senhaInput.type = "text";
         } else {
             senhaInput.type = "password";
+        }
+    });
+
+    mostrarSenhaButton2.addEventListener("click", function() {
+        if (senhaInput2.type === "password") {
+            senhaInput2.type = "text";
+        } else {
+            senhaInput2.type = "password";
         }
     });
 });

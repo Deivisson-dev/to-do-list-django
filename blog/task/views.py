@@ -20,7 +20,8 @@ def signup(request):
 
     else: 
         if request.POST['senha1'] == request.POST['senha2']:
-
+            if request.POST['senha1'] == '' or request.POST['senha2'] == '' or request.POST['username'] == '' or request.POST['email'] == '':
+                return render (request,'signup.html', { 'form' : UserCreationForm ,"error": 'Preencha todos os campos'})
             try: 
                 
                 user = User.objects.create_user(username=request.POST['username'], password=request.POST['senha1'], email=request.POST['email'])
