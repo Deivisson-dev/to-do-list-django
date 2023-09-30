@@ -31,21 +31,17 @@
                     <!-- Move the label "Descrição" above the textarea -->
                     <label for="{{ form.description.id_for_label }}">Descrição:</label>
                     {{ form.description }}
-                    
-                    <button type="submit" class="btn mt-2" style="background-color: #2e1e45; color: #FFF;">Atualizar</button>
+
+                    <div class="mb-3">
+                        <label for="important" class="form-label">Importante</label>
+                        <select name="important" id="important" class="form-select">
+                            <option value="True">Sim</option>
+                            <option value="False">Não</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn" style="background-color: #2e1e45; color: #FFF;">Atualizar</button>
                 </form>
-    
-                <div class="mt-5 d-flex gap-3">
-                    <form action="{% url 'mark_task_completed' task.id %}" method="POST">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-success">Completar</button>
-                    </form>
-    
-                    <form action="{% url 'deleted_tarefa' task.id %}" method="POST">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Deletar</button>
-                    </form>
-                </div>
             </div>
         </div>
     </main>

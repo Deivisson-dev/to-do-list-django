@@ -1,7 +1,6 @@
 body {
     font-family: Lato;
     background-color: rgb(14,14,14);
-    font-weight: bold;
 }
 
 .text-center{
@@ -11,4 +10,12 @@ body {
 .card card-body{
     background-color: rgb(14,14,14);
     font-weight: bold;
+}
+
+.btn{
+    margin-top: 30px;
+}
+
+.btn:hover{
+    background-color: #6a00ff;
 }

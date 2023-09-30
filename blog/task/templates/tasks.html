@@ -21,41 +21,94 @@
         {% for task in tasks %}
         <li>
             {% if task.important %}
-            <div class="div_task">
-                <div class="div_title">
-                    <h2 class="title text-success">{{ task.title }}</h2>
+            <a href="{% url 'task_detalhes' task.id %}" style="text-decoration: none;">
+                <div class="div_task">
+                    <div class="div_title">
+                        <h2 class="title text-success">{{ task.title }}</h2>
+                    </div>
+                    <div class="div_description" style="color: white;">
+                        <p class="description">{{ task.description }}</p>
+                    </div>
                 </div>
-                <div class="div_description">
-                    <p class="description">{{ task.description }}</p>
-                </div>
-            </div>
+            </a>
             {% else %}
-            <div class="div_task">
-                <div class="div_title">
-                    <h2 class="title">{{ task.title }}</h2>
+            <a href="{% url 'task_detalhes' task.id %}" style="text-decoration: none;">
+                <div class="div_task">
+                    <div class="div_title" style="color: white;">
+                        <h2 class="title">{{ task.title }}</h2>
+                    </div>
+                    <div class="div_description"  style="color: white;">
+                        <p class="description">{{ task.description }}</p>
+                    </div>
                 </div>
-                <div class="div_description">
-                    <p class="description">{{ task.description }}</p>
-                </div>
-            </div>
+            </a>
             {% endif %}
             <div class="div_buttons">
-                <form action="{% url 'deleted_tarefa' task.id %}" method="POST">
+                <form  method="POST">
                     {% csrf_token %}
-                    <button id="btn-ok">
+                    <a id="btn-ok" data-bs-toggle="modal" data-bs-target="#deleteTaskModal{{ task.id }}">
                         <img src="{% static 'task/img/lixeira-de-reciclagem.svg' %}" alt="" width="16" height="16">
-                    </button>
+                    </a>
                 </form>
-                <form action="{% url 'mark_task_completed' task.id %}" method="POST">
+                <form method="POST">
                     {% csrf_token %}
-                    <button id='btn-ok' class="complete-task" data-task-id="{{ task.id }}">
+                    <a id="btn-ok" data-bs-toggle="modal" data-bs-target="#completeTaskModal{{ task.id }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
                             <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
                         </svg>
-                    </button>
+                    </a>
                 </form>
             </div>
+            <!-- Modal for deleting a task -->
+            <div class="modal fade" id="deleteTaskModal{{ task.id }}" tabindex="-1" aria-labelledby="deleteTaskModalLabel{{ task.id }}" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="color: black;">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteTaskModalLabel">Deletar Tarefa</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <span class="text-danger"><i class="fas fa-trash-alt fa-3x mt-4"></i></span>
+                            <div class="mt-4" style="height: 50px; text-transform: none; font-size: 20px;">Você tem certeza que deseja deletar a tarefa?</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                            <form action="{% url 'deleted_tarefa' task.id %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-danger btn-sm">Deletar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal for completing a task -->
+            <div class="modal fade" id="completeTaskModal{{ task.id }}" tabindex="-1" aria-labelledby="completeTaskModalLabel{{ task.id }}" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="color: black;">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="completeTaskModalLabel"><i></i> Completar Tarefa</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <span class="text-success"><i class="fas fa-check fa-3x mt-4"></i></span>
+                            <div class="mt-4" style="height: 50px; text-transform: none; font-size: 20px;">Você tem certeza que deseja completar a tarefa ?</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                            <form action="{% url 'mark_task_completed' task.id %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-success btn-sm">Confirmar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </li>
+        
+
+
+
+
         {% endfor %}
     </ol>
 </body>
