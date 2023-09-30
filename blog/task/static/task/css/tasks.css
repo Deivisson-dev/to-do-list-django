@@ -17,7 +17,6 @@
 
 body{
     font-family: 'Lato';
-    background-color: var(--color-dark);
     color: var(--color-white);
     display: flex;
     flex-direction: column;
@@ -39,13 +38,13 @@ h1{
 }
 
 
-.content{
+.content_div{
     display: flex;
     flex-direction: column;
     gap: 4rem;
 }
 
-.content--add-item{
+.add_item{
     display: flex;
     align-items: center;
     gap: 1rem;

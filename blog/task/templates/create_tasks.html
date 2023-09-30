@@ -30,12 +30,12 @@
                         <label for="description" class="form-label">Descrição</label>
                         <textarea name="description" id="description" rows="3" class="form-control"></textarea>
                     </div>
-                    <div class="form-check pb-2">
-                        <input class="form-check-input" type="checkbox" value="" id="important">
-                        <label class="form-check-label" for="important">
-                            Importante
-                        </label>
-                    </div>
+                    <div class="mb-3">
+                        <label for="important" class="form-label">Importante</label>
+                        <select name="important" id="important" class="form-select">
+                            <option value="True">Sim</option>
+                            <option value="False">Não</option>
+                        </select>
                     <button type="submit" class="btn btn-primary">Salvar Tarefa</button>
                 </form>
             </div>

@@ -9,3 +9,7 @@
     background-color: #2e1e45;
     color: #FFF;
 }
+
+.btn btn-outline-danger btn-sm:hover{
+    background-color: rgb(141, 39, 39);
+}

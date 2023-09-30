@@ -1,5 +1,6 @@
 {% extends 'menu.html' %}
 
+
 {% block content %}
 
 {% load static %}
@@ -12,33 +13,32 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200&display=swap" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>To-do-list</title>
 </head>
-<body>
-    <form action="/create/tasks" method="POST">
-        {{error}}
-        {% csrf_token %}
-        <h1>To Do List</h1>
-        <div class="content">
-            <div class="content--add-item">
-                <input type="text" id="title" name="title" placeholder="Adicione uma nova tarefa">
-                <button id="btn-new-task" title="Clique aqui para adicionar uma nova task">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </form>
+<body style="background-color: rgb(14,14,14);">
+    <h1>To Do List</h1>
     <ol class="to-do-list">
         {% for task in tasks %}
         <li>
-            <a href="{% url 'task_detalhes' task.id %}" style="text-decoration: none; color: #FFF;">
-                <strong class="{% if task.important %}fw-bold text-success{% else %}fw-bold{% endif %}">
-                    {{ task.title }}
-                </strong>
-            </a>
+            {% if task.important %}
+            <div class="div_task">
+                <div class="div_title">
+                    <h2 class="title text-success">{{ task.title }}</h2>
+                </div>
+                <div class="div_description">
+                    <p class="description">{{ task.description }}</p>
+                </div>
+            </div>
+            {% else %}
+            <div class="div_task">
+                <div class="div_title">
+                    <h2 class="title">{{ task.title }}</h2>
+                </div>
+                <div class="div_description">
+                    <p class="description">{{ task.description }}</p>
+                </div>
+            </div>
+            {% endif %}
             <div class="div_buttons">
                 <form action="{% url 'deleted_tarefa' task.id %}" method="POST">
                     {% csrf_token %}
@@ -58,7 +58,6 @@
         </li>
         {% endfor %}
     </ol>
-    
 </body>
 </html>
 {% endblock %}
