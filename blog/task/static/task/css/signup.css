@@ -5,7 +5,9 @@
     font-family: 'Poppins', sans-serif;
 }
 
-
+body{
+    background-color: rgb(14,14,14);
+}
 
 
 .container_div{
@@ -18,16 +20,14 @@
     width: 40vw;
     background-color: #2e1e45;
     padding: 25px;
-    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .tab_two{
     height: 100vh;
     width: 60vw;
-    background: #FFFAFA;
+    background: rgb(14,14,14);
     padding: 25px;
-    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
@@ -150,6 +150,7 @@
     width: 40vw;
     height: 66px;
     gap: 20px;
+    border-radius: 15px;
 }
 
 .ipt_text img{
