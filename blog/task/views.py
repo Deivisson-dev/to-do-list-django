@@ -32,7 +32,7 @@ def signup(request):
             except:
                 return render (request,'signup.html', { 'form' : UserCreationForm ,"error": 'Usuário já existe'}) 
            
-        return render (request,'signup.html', { 'form' : UserCreationForm ,"error": 'senhas são diferentes'}) 
+        return render (request,'signup.html', { 'form' : UserCreationForm ,"error": 'Senhas são diferentes'}) 
 
 def home(request):
     return render(request,'home.html')
